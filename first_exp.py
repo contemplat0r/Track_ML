@@ -371,7 +371,7 @@ event_df.shape
 
 # In[42]:
 
-
+random.seed(0)
 grouped_by_event_datasets_df = read_dataset_to_grouped_by_event_dfs(event_grouped_dataset_filenames)
 
 
@@ -395,7 +395,8 @@ for event_id, dataframes in grouped_by_event_datasets_df.items():
     print(dataframes[1].info())   
     print(dataframes[2].info())   
     print(dataframes[3].info())   
-
+'''
+'''
 for event_id, dataframes in grouped_by_event_datasets_df.items():
     reduce_df_types(dataframes[0])
     reduce_df_types(dataframes[1])
@@ -403,7 +404,9 @@ for event_id, dataframes in grouped_by_event_datasets_df.items():
     reduce_df_types(dataframes[3])
     #print(dataframes[0].info())
     #print(dataframes[1].info())   
+'''
 
+'''
 print("After reduce types")
 for event_id, dataframes in grouped_by_event_datasets_df.items():
     print(dataframes[0].info())
@@ -411,9 +414,12 @@ for event_id, dataframes in grouped_by_event_datasets_df.items():
     print(dataframes[2].info())   
     print(dataframes[3].info())   
 '''
+
+'''
 for event_id, dataframes in grouped_by_event_datasets_df.items():
     print("\n\n", event_id)
     print(dataframes[0].info(), dataframes[1].info(), dataframes[2].info(), dataframes[3].info())   
+'''
 
 print("len(grouped_by_event_datasets_df): ", len(grouped_by_event_datasets_df))
 # In[ ]:
@@ -424,6 +430,14 @@ grouped_by_event_datasets_df_part = {
         #event_id: dataframes for event_id, dataframes in list(grouped_by_event_datasets_df.items())[:8]
         event_id: dataframes for event_id, dataframes in grouped_by_event_datasets_df.items()
     }
+
+'''
+grouped_by_event_datasets_df_part = {
+        #event_id: dataframes for event_id, dataframes in list(grouped_by_event_datasets_df.items())[:8]
+        event_id: dataframes for event_id, dataframes in tuple(grouped_by_event_datasets_df.items())[:2]
+    }
+'''
+
 event_dfs = read_dataset_to_event_dfs(grouped_by_event_datasets_df_part)
 
 #print(list(event_dfs.values[0]).info())
@@ -431,6 +445,7 @@ event_dfs = read_dataset_to_event_dfs(grouped_by_event_datasets_df_part)
 for event_id, df in event_dfs.items():
     print(event_id)
     print(df.info())
+    df.to_csv('{}.csv'.format(event_id, index=False))
 
 
 # In[1]:
@@ -506,7 +521,3 @@ for event_id, grouped_dfs in grouped_by_event_datasets_df.items():
 '''
 
 # In[ ]:
-
-
-
-
