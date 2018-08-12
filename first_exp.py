@@ -396,7 +396,6 @@ for event_id, dataframes in grouped_by_event_datasets_df.items():
     print(dataframes[2].info())   
     print(dataframes[3].info())   
 '''
-'''
 for event_id, dataframes in grouped_by_event_datasets_df.items():
     reduce_df_types(dataframes[0])
     reduce_df_types(dataframes[1])
@@ -404,7 +403,6 @@ for event_id, dataframes in grouped_by_event_datasets_df.items():
     reduce_df_types(dataframes[3])
     #print(dataframes[0].info())
     #print(dataframes[1].info())   
-'''
 
 '''
 print("After reduce types")
@@ -426,17 +424,16 @@ print("len(grouped_by_event_datasets_df): ", len(grouped_by_event_datasets_df))
 
 
 ## event_dfs = read_dataset_to_event_dfs(grouped_by_event_datasets_df)
+'''
 grouped_by_event_datasets_df_part = {
-        #event_id: dataframes for event_id, dataframes in list(grouped_by_event_datasets_df.items())[:8]
-        event_id: dataframes for event_id, dataframes in grouped_by_event_datasets_df.items()
-    }
+        event_id: dataframes for event_id, dataframes in list(grouped_by_event_datasets_df.items())[:1]
+        #event_id: dataframes for event_id, dataframes in grouped_by_event_datasets_df.items()
+'''
 
-'''
 grouped_by_event_datasets_df_part = {
         #event_id: dataframes for event_id, dataframes in list(grouped_by_event_datasets_df.items())[:8]
-        event_id: dataframes for event_id, dataframes in tuple(grouped_by_event_datasets_df.items())[:2]
+        event_id: dataframes for event_id, dataframes in tuple(grouped_by_event_datasets_df.items())[:1]
     }
-'''
 
 event_dfs = read_dataset_to_event_dfs(grouped_by_event_datasets_df_part)
 
@@ -445,7 +442,7 @@ event_dfs = read_dataset_to_event_dfs(grouped_by_event_datasets_df_part)
 for event_id, df in event_dfs.items():
     print(event_id)
     print(df.info())
-    df.to_csv('{}.csv'.format(event_id, index=False))
+    #df.to_csv('{}.csv'.format(event_id, index=False))
 
 
 # In[1]:
